@@ -5,32 +5,35 @@
  */
 package 
 {
-	import org.FileQueue;
-	import org.events.TriggerEvent;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 	import flash.events.*;
 	import flash.external.ExternalInterface;
 	import flash.net.FileFilter;
 	import flash.net.FileReference;
 	import flash.net.FileReferenceList;
-	import flash.utils.describeType;
-	import flash.utils.Timer;
 	import flash.system.Security;
+	import flash.utils.Timer;
+	import flash.utils.describeType;
 	
-	[SWF(frameRate="15", width="20", height="20")]
+	import org.FileQueue;
+	import org.events.TriggerEvent;
+	
+	[SWF(frameRate="24", widthPercent="100", heightPercent="100")]
 	public class FlashUploader extends Sprite 
 	{
 		private var _params:Object;
 		private var _returnJSON:Boolean;
 		private var _fileQueue:FileQueue;
 		private var _setupTimer:Timer = new Timer(500, 0);
-		private var _uploaderInterface:String = 'Uplader';
+		private var _uploaderInterface:String = 'Uploader';
 		
 		public function FlashUploader():void {
 			Security.allowDomain("*");
             Security.allowInsecureDomain("*");
 			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.EXACT_FIT;
 			
 			_params = root.loaderInfo.parameters;
 			_params.script = decodeURIComponent(_params.script);
@@ -48,10 +51,10 @@ package
 		
 		private function init():void {
 			var button:Sprite = new Sprite();
-			button.graphics.beginFill(0, 0);
-			button.graphics.drawRect(0, 0, Math.max(stage.stageWidth, 20), Math.max(stage.stageHeight, 10));
-			button.graphics.endFill();
 			button.buttonMode = true;
+			button.graphics.beginFill(0, 0);
+			button.graphics.drawRect(0, 0, Math.max(stage.stageWidth, 20), Math.max(stage.stageHeight, 20));
+			button.graphics.endFill();
 			addChild(button);
 			
 			var typeFilter:Array = [];
@@ -64,7 +67,6 @@ package
 					typeFilter.push(new FileFilter(fileDesc[n] ? (fileDesc[n]+'('+fileExts[n]+')') : fileExts[n], fileExts[n]));
 				}
 			}
-			ExternalInterface.call('console.info('+JSON.stringify(typeFilter)+')');
 			
 			if (_params.multi) {
 				var selectList:FileReferenceList = new FileReferenceList();
