@@ -1,0 +1,35 @@
+.upload-progress {
+	font-size:12px; font-family:Arial, Verdana,"宋体";
+	padding:14px;
+	border:1px solid #C3E1F0;
+	background-color:#F2F8FD;
+	position:fixed;
+	left:50%;
+	top:50%;
+	margin-left:-100px;
+	margin-top:-80px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	z-index:9999;
+	text-align:center;
+	display:none;
+}
+.upload-progress .bar {
+	width:168px;height:28px;
+	border:1px solid #ccc;
+	background:#fff;text-align:left;position:relative;
+}
+.upload-progress .bar .percent {
+	position:absolute; top:0; left:40px;
+	width:80px;
+	height:28px;
+	line-height:28px;text-align:center;
+	font-family:Tahoma, Verdana, Arial; font-size:14px;
+	font-weight:bold; color:#f60;
+}
+.upload-progress .bar .progress {
+	background-color:#DDEEF1;
+	height:28px;width:0px;
+	border-right:1px solid #9FCCE9;
+}
