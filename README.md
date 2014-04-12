@@ -88,7 +88,7 @@ isReturnJson | boolean    | void      | 是否开启返回json
 
 Method      | return     | Arguments | Description
 ------------|------------|-----------|-------------
-getUploader | <Uploader> | elem:DOMElement | 从DOM节点中获取Uploader实例
+getUploader | \<Uploader\> | elem:DOMElement | 从DOM节点中获取Uploader实例
 addPlugin   | void       | name:String, func:Function | 添加插件
 setSWFUrl   | void       | url:String | 设置swf的url
 setVerbose  | void       | void      | 开启啰嗦模式，在firebug中输出调试信息
