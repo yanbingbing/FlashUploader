@@ -1,8 +1,7 @@
 /**
  * Flash Uploader
  *
- * @author    kakalong {@link http://yanbingbing.com}
- * @version   $Id: TriggerEvent.as 4812 2012-04-01 09:49:02Z kakalong $
+ * @author bingbing {@link http://yanbingbing.com}
  */
 package org.events 
 {

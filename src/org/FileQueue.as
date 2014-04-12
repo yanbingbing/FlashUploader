@@ -1,14 +1,12 @@
 /**
  * Flash Uploader
  *
- * @author    kakalong {@link http://yanbingbing.com}
- * @version   $Id: FileQueue.as 5370 2012-04-25 07:06:11Z kakalong $
+ * @author bingbing {@link http://yanbingbing.com}
  */
 package org 
 {
 	import org.events.*;
 	import flash.events.EventDispatcher;
-	import flash.events.TimerEvent;
 	import flash.net.FileReference;
 	import flash.net.URLVariables;
 	
@@ -91,7 +89,9 @@ package org
 					uploadItem(id);
 				}
 			} else {
-				while (_uploadQueueLength < MAX_QUEUE_LENGTH && (id = _queue.shift())) {
+				while (_uploadQueueLength < MAX_QUEUE_LENGTH) {
+					id = _queue.shift();
+					if (!id) break;
 					uploadItem(id);
 				}
 			}

@@ -1,8 +1,7 @@
 /**
  * Flash Uploader
  *
- * @author    kakalong {@link http://yanbingbing.com}
- * @version   $Id: File.as 5367 2012-04-25 06:54:02Z kakalong $
+ * @author bingbing {@link http://yanbingbing.com}
  */
 package org 
 {
@@ -10,7 +9,6 @@ package org
 	import flash.events.*;
 	import flash.net.FileReference;
 	import flash.net.URLRequest;
-	import flash.net.URLRequestHeader;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
 	import flash.utils.getTimer;

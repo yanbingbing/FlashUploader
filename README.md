@@ -1,7 +1,7 @@
 FlashUploader
 =============
 
-`Flash Uploader`，swf文件在`Flash Builder 4.6`下使用`Flex 4.6.0 SDK`编译，`Adobe Flash Player`版本最低限制`11.1.0`，兼容各种浏览器。
+`Flash Uploader`，swf文件在`Flash Builder 4.7`下编译，`Adobe Flash Player`版本最低限制`11.4.0`，兼容各种浏览器。
 
 ## 使用 Usage
 
@@ -95,3 +95,5 @@ setVerbose  | void       | void      | 开启啰嗦模式，在firebug中输出�
 
 
 
+----
+example: [http://lab.yanbingbing.com/uploader](http://lab.yanbingbing.com/uploader)

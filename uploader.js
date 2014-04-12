@@ -191,7 +191,7 @@
 
     function createFlash(guid, opts) {
         var movie = SWF_URL + (SWF_URL.indexOf('?') > -1 ? '&' : '?') + guid;
-        if (!version_test(flashVersion, '9.0.24')) {
+        if (!version_test(flashVersion, '11.4.0')) {
             alert('flash version not available');
             return false;
         }

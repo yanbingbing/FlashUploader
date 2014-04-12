@@ -15,12 +15,11 @@ package
 	import flash.net.FileReferenceList;
 	import flash.system.Security;
 	import flash.utils.Timer;
-	import flash.utils.describeType;
 	
 	import org.FileQueue;
 	import org.events.TriggerEvent;
 	
-	[SWF(frameRate="24", widthPercent="100", heightPercent="100")]
+	[SWF(backgroundColor="#000000", width="100", height="100")]
 	public class FlashUploader extends Sprite 
 	{
 		private var _params:Object;
