@@ -355,7 +355,7 @@
     };
     Uploader.setSWF = function (url, version) {
         SWF_URL = url;
-        SWF_VERSION = SWF_VERSION || version;
+        version && (SWF_VERSION = version);
     };
     Uploader.setVerbose = function () {
         _debug = function () {
