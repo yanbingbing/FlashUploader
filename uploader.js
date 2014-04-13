@@ -79,8 +79,8 @@
         if (!a) return false;
         a = a.split('.');
         b = b.split('.');
-        a[0] = parseInt(a[0]);
-        b[0] = parseInt(b[0]);
+        a[0] = parseInt(a[0], 10);
+        b[0] = parseInt(b[0], 10);
         for (var i = 0, l = b.length; i < l; i++) {
             if (a[i] == undefined || a[i] < b[i]) {
                 return false;
@@ -187,16 +187,15 @@
         fn && fn(uploader, args);
     }
 
-    var SWF_URL = 'uploader.swf';
+    var SWF_URL = 'uploader.swf', SWF_VERSION = '11.4.0';
 
     function createFlash(guid, opts) {
-        var movie = SWF_URL + (SWF_URL.indexOf('?') > -1 ? '&' : '?') + guid;
-        if (!version_test(flashVersion, '11.4.0')) {
-            alert('flash version not available');
-            return false;
+        if (!version_test(flashVersion, SWF_VERSION)) {
+            throw 'flash version not available';
         }
 
         var div = document.createElement('div');
+        var movie = SWF_URL + (SWF_URL.indexOf('?') > -1 ? '&' : '?') + guid;
         opts.type = 'application/x-shockwave-flash';
         if (window.ActiveXObject) {
             var attrs = {
@@ -208,6 +207,7 @@
                 opts[k] && (attrs[k] = opts[k]);
                 delete opts[k];
             });
+            opts.movie = movie;
             div.innerHTML = [
                 '<object ', _genAttrs(attrs), '>',
                 _genParams(opts),
@@ -287,7 +287,6 @@
         css(elem, {position: 'relative', overflow: 'hidden', display: 'inline-block'});
         bindPlugin(opt.plugin, _this);
         saveUploader(elem, guid, _this);
-
         function display() {
             var w = elem.offsetWidth, h = elem.offsetHeight;
             if (!w || !h) {
@@ -354,8 +353,9 @@
         _debug && _debug(guid, 'readParams', INSTS[guid].getParams());
         return _genValue(INSTS[guid].getParams());
     };
-    Uploader.setSWFUrl = function (url) {
+    Uploader.setSWF = function (url, version) {
         SWF_URL = url;
+        SWF_VERSION = SWF_VERSION || version;
     };
     Uploader.setVerbose = function () {
         _debug = function () {

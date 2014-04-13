@@ -1,7 +1,7 @@
 FlashUploader
 =============
 
-`Flash Uploader`，swf文件在`Flash Builder 4.7`下编译，`Adobe Flash Player`版本最低限制`11.4.0`，兼容各种浏览器。
+FlashUploader.swf文件在`Flash Builder 4.7`下编译，`Adobe Flash Player`版本最低限制`11.4.0`，FlashUploader-9.0.24.swf文件早期在FlashDevelop上编译，`Adobe Flash Player`版本最低限制`9.0.24`，理论上兼容各种浏览器。
 
 ## 使用 Usage
 
@@ -90,10 +90,20 @@ Method      | return     | Arguments | Description
 ------------|------------|-----------|-------------
 getUploader | \<Uploader\> | elem:DOMElement | 从DOM节点中获取Uploader实例
 addPlugin   | void       | name:String, func:Function | 添加插件
-setSWFUrl   | void       | url:String | 设置swf的url
+setSWF      | void       | url:String, version:String | 设置swf的url及播放器版本限制
 setVerbose  | void       | void      | 开启啰嗦模式，在firebug中输出调试信息
 
 
+## Example
 
-----
-example: [http://lab.yanbingbing.com/uploader](http://lab.yanbingbing.com/uploader)
+```
+Uploader.setSWF('http://lab.yanbingbing.com/uploader/FlashUploader.swf');
+// Uploader.setSWF('http://lab.yanbingbing.com/uploader/FlashUploader-9.0.24.swf', '9.0.24');
+// 开启啰嗦模式
+Uploader.setVerbose();
+// 创建实例
+var uploader = new Uploader(document.getElementById('up'), {
+	script: 'http://lab.yanbingbing.com/script.php'
+});
+```
+[http://lab.yanbingbing.com/uploader](http://lab.yanbingbing.com/uploader)
