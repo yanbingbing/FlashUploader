@@ -4,6 +4,9 @@
  * @author http://yanbingbing.com
  */
 (function (window, undefined) {
+
+    'use strict';
+
     var document = window.document;
 
     function parseJSON(data) {
@@ -41,6 +44,18 @@
             target[key] = source[key];
         }
         return target;
+    }
+
+    function computeStyle(elem) {
+        var computed, style = elem.style;
+        if (window.getComputedStyle) {
+            computed = elem.ownerDocument.defaultView.getComputedStyle(elem, null);
+        } else if (document.documentElement.currentStyle) {
+            computed = elem.currentStyle;
+        }
+        return function (name) {
+            return computed && ('getPropertyValue' in computed && computed.getPropertyValue(name) || computed[name]) || style[name];
+        };
     }
 
     var elemCreator = document.createElement('div');
@@ -284,7 +299,16 @@
         each('selectStart selectOne selectEnd uploadStart uploadProgress uploadComplete uploadCancel queueStart queueComplete queueSuccess queueFull queueClear error', function (k) {
             opt[k] && _this.bind(k, opt[k]);
         });
-        css(elem, {position: 'relative', overflow: 'hidden', display: 'inline-block'});
+        var computed = computeStyle(elem);
+        if (computed('position') === 'static') {
+            css(elem, 'position', 'relative');
+        }
+        if (computed('display') === 'inline') {
+            css(elem, 'display', 'inline-block');
+        }
+        if (computed('overflow') !== 'hidden') {
+            css(elem, 'overflow', 'hidden');
+        }
         bindPlugin(opt.plugin, _this);
         saveUploader(elem, guid, _this);
         function display() {
