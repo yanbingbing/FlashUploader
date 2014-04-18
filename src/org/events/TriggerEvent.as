@@ -9,6 +9,8 @@ package org.events
 	
 	public class TriggerEvent extends Event 
 	{
+        public static const READY:String           = 'ready';/* uploader ready */
+
 		public static const SELECT_START:String    = 'selectStart';/* select start */
 		public static const SELECT_ONE:String      = 'selectOne'; /* a file was selected*/
 		public static const SELECT_END:String      = 'selectEnd'; /* select complete */

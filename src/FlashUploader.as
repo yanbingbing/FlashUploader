@@ -106,6 +106,7 @@ package
 			_fileQueue.addEventListener(TriggerEvent.QUEUE_FULL, trigger);
 			_fileQueue.addEventListener(TriggerEvent.QUEUE_CLEAR, trigger);
 			_fileQueue.addEventListener(TriggerEvent.ERROR, trigger);
+            trigger(new TriggerEvent(TriggerEvent.READY));
 		}
 		
 		private function testExternalInterface():void {
