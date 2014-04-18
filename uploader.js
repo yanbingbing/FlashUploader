@@ -263,6 +263,7 @@
          sizeLimit:0,
          queueLengthLimit:0,
 
+         ready:function(){},
          selectStart:function(){},
          selectOne:function(){},
          selectEnd:function(){},
@@ -317,14 +318,17 @@
                 setTimeout(display, 1000);
                 return;
             }
-            append(elem, _this.movie = createFlash(guid, {
-                width: w,
-                height: h,
-                flashvars: vars,
-                quality: 'high',
-                wmode: 'transparent',
-                allowScriptAccess: 'always'
-            }));
+            try {
+                append(elem, _this.movie = createFlash(guid, {
+                    width: w,
+                    height: h,
+                    flashvars: vars,
+                    quality: 'high',
+                    wmode: 'transparent',
+                    allowScriptAccess: 'always'
+                }));
+            } catch (e) {}
+
             display = null;
         }
 
